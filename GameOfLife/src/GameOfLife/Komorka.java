@@ -4,14 +4,14 @@ import java.util.List;
 
 public class Komorka {
 	private StanKomorki stan;
-	private PrzyszlyStanKomorki zmianaStanu;
+	private StanKomorki zmianaStanu;
 	private List<Komorka> sasiedzi;
 	private int liczbaZywychSasiadow;
 
 	public Komorka(StanKomorki status) {
 		this.stan = status;
 		liczbaZywychSasiadow = 0;
-		zmianaStanu = PrzyszlyStanKomorki.Zycie;
+		zmianaStanu = StanKomorki.ZYWA;
 	}
 
 	public void ustawSasiadow(List<Komorka> sasiedzi) {
@@ -28,21 +28,23 @@ public class Komorka {
 	}
 
 	public void ustalCzyZywaWNastepnejGeneracji() {
-		zmianaStanu = PrzyszlyStanKomorki.Zycie;
+		zmianaStanu = StanKomorki.ZYWA;
 		if (liczbaZywychSasiadow < 2 || liczbaZywychSasiadow > 3) {
-			zmianaStanu = PrzyszlyStanKomorki.NaSmierc;
+			zmianaStanu = StanKomorki.MARTWA;
 		} else if (stan == StanKomorki.MARTWA && liczbaZywychSasiadow == 3) {
-			zmianaStanu = PrzyszlyStanKomorki.Zycie;
+			zmianaStanu = StanKomorki.ZYWA;
 		} else if (stan == StanKomorki.MARTWA) {
-			zmianaStanu = PrzyszlyStanKomorki.NaSmierc;
-		} 
+			zmianaStanu = StanKomorki.MARTWA;
+		}
 	}
 
 	public void zmienStanDoNastepnejGeneracji() {
-		if (zmianaStanu == PrzyszlyStanKomorki.NaSmierc)
+		if (zmianaStanu == StanKomorki.MARTWA) {
 			stan = StanKomorki.MARTWA;
-		else
+		}
+		else {
 			stan = StanKomorki.ZYWA;
+		}
 	}
 
 	public StanKomorki dajStan() {
