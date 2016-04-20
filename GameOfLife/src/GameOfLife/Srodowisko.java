@@ -1,15 +1,15 @@
 package GameOfLife;
 
-import java.lang.Math;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Srodowisko {
 	private int szerokoscSrodowiska;
 	private int wysokoscSrodowiska;
 	private int liczbaKomorekWSrodowisku;
-	private ArrayList<Komorka> populacja;
+	private List<Komorka> populacja;
 
-	public Srodowisko(int szerokosc, int wysokosc, ArrayList<Komorka> populacja) {
+	public Srodowisko(int szerokosc, int wysokosc, List<Komorka> populacja) {
 		this.szerokoscSrodowiska = szerokosc;
 		this.wysokoscSrodowiska = wysokosc;
 		liczbaKomorekWSrodowisku = szerokoscSrodowiska * wysokoscSrodowiska;
@@ -30,8 +30,8 @@ public class Srodowisko {
 	}
 
 	private void ustalSasiadow(Komorka komorka) {
-		ArrayList<Integer> indeksyPotencjalnychSasiadow = new ArrayList<Integer>();
-		ArrayList<Komorka> sasiedzi = new ArrayList<Komorka>();
+		List<Integer> indeksyPotencjalnychSasiadow = new ArrayList<Integer>();
+		List<Komorka> sasiedzi = new ArrayList<Komorka>();
 		int indeksKomorkiSzukajacejSasiadow = populacja.indexOf(komorka);
 		indeksyPotencjalnychSasiadow.add(indeksKomorkiSzukajacejSasiadow - szerokoscSrodowiska - 1);
 		indeksyPotencjalnychSasiadow.add(indeksKomorkiSzukajacejSasiadow - szerokoscSrodowiska);
@@ -70,14 +70,10 @@ public class Srodowisko {
 	}
 
 	private boolean czyWTymSamymRzedzie(int indeksKomorki1, int indeksKomorki2) {
-		if (indeksKomorki1 / szerokoscSrodowiska == indeksKomorki2 / szerokoscSrodowiska)
-			return true;
-		return false;
+		return (indeksKomorki1 / szerokoscSrodowiska == indeksKomorki2 / szerokoscSrodowiska);	
 	}
 
 	private boolean czyWSasiednimRzedzie(int indeksKomorki1, int indeksKomorki2) {
-		if (Math.abs((indeksKomorki1 / szerokoscSrodowiska) - (indeksKomorki2 / szerokoscSrodowiska)) == 1)
-			return true;
-		return false;
+		return (Math.abs((indeksKomorki1 / szerokoscSrodowiska) - (indeksKomorki2 / szerokoscSrodowiska)) == 1);	
 	}
 }
