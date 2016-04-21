@@ -36,29 +36,22 @@ public class Srodowisko {
 		indeksyPotencjalnychSasiadow.add(indeksKomorkiSzukajacejSasiadow - szerokoscSrodowiska - 1);
 		indeksyPotencjalnychSasiadow.add(indeksKomorkiSzukajacejSasiadow - szerokoscSrodowiska);
 		indeksyPotencjalnychSasiadow.add(indeksKomorkiSzukajacejSasiadow - szerokoscSrodowiska + 1);
-		indeksyPotencjalnychSasiadow.add(indeksKomorkiSzukajacejSasiadow - 1);
-		indeksyPotencjalnychSasiadow.add(indeksKomorkiSzukajacejSasiadow + 1);
 		indeksyPotencjalnychSasiadow.add(indeksKomorkiSzukajacejSasiadow + szerokoscSrodowiska - 1);
 		indeksyPotencjalnychSasiadow.add(indeksKomorkiSzukajacejSasiadow + szerokoscSrodowiska);
 		indeksyPotencjalnychSasiadow.add(indeksKomorkiSzukajacejSasiadow + szerokoscSrodowiska + 1);
-		for (int i = 0; i < 3; i++) {
+		indeksyPotencjalnychSasiadow.add(indeksKomorkiSzukajacejSasiadow - 1);
+		indeksyPotencjalnychSasiadow.add(indeksKomorkiSzukajacejSasiadow + 1);
+		for (int i = 0; i < 6; i++) {
 			int indeksSprawdzanejKomorki = indeksyPotencjalnychSasiadow.get(i);
 			if (indeksSprawdzanejKomorki >= 0 && indeksSprawdzanejKomorki < liczbaKomorekWSrodowisku
 					&& czyWSasiednimRzedzie(indeksSprawdzanejKomorki, indeksKomorkiSzukajacejSasiadow)) {
 				sasiedzi.add(populacja.get(indeksSprawdzanejKomorki));
 			}
 		}
-		for (int i = 3; i < 5; i++) {
+		for (int i = 6; i < 8; i++) {
 			int indeksSprawdzanejKomorki = indeksyPotencjalnychSasiadow.get(i);
 			if (indeksSprawdzanejKomorki >= 0 && indeksSprawdzanejKomorki < liczbaKomorekWSrodowisku
 					&& czyWTymSamymRzedzie(indeksSprawdzanejKomorki, indeksKomorkiSzukajacejSasiadow)) {
-				sasiedzi.add(populacja.get(indeksSprawdzanejKomorki));
-			}
-		}
-		for (int i = 5; i < 8; i++) {
-			int indeksSprawdzanejKomorki = indeksyPotencjalnychSasiadow.get(i);
-			if (indeksSprawdzanejKomorki >= 0 && indeksSprawdzanejKomorki < liczbaKomorekWSrodowisku
-					&& czyWSasiednimRzedzie(indeksSprawdzanejKomorki, indeksKomorkiSzukajacejSasiadow)) {
 				sasiedzi.add(populacja.get(indeksSprawdzanejKomorki));
 			}
 		}
@@ -70,10 +63,10 @@ public class Srodowisko {
 	}
 
 	private boolean czyWTymSamymRzedzie(int indeksKomorki1, int indeksKomorki2) {
-		return (indeksKomorki1 / szerokoscSrodowiska == indeksKomorki2 / szerokoscSrodowiska);	
+		return (indeksKomorki1 / szerokoscSrodowiska == indeksKomorki2 / szerokoscSrodowiska);
 	}
 
 	private boolean czyWSasiednimRzedzie(int indeksKomorki1, int indeksKomorki2) {
-		return (Math.abs((indeksKomorki1 / szerokoscSrodowiska) - (indeksKomorki2 / szerokoscSrodowiska)) == 1);	
+		return (Math.abs((indeksKomorki1 / szerokoscSrodowiska) - (indeksKomorki2 / szerokoscSrodowiska)) == 1);
 	}
 }
