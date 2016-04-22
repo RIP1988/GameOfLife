@@ -41,8 +41,7 @@ public class Komorka {
 	public void zmienStanDoNastepnejGeneracji() {
 		if (zmianaStanu == StanKomorki.MARTWA) {
 			stan = StanKomorki.MARTWA;
-		}
-		else {
+		} else {
 			stan = StanKomorki.ZYWA;
 		}
 	}

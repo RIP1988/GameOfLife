@@ -29,6 +29,10 @@ public class Srodowisko {
 		}
 	}
 
+	public StanKomorki dajStanKomorki(int indeks) {
+		return populacja.get(indeks).dajStan();
+	}
+
 	private void ustalSasiadow(Komorka komorka) {
 		List<Integer> indeksyPotencjalnychSasiadow = new ArrayList<Integer>();
 		List<Komorka> sasiedzi = new ArrayList<Komorka>();
@@ -56,10 +60,6 @@ public class Srodowisko {
 			}
 		}
 		komorka.ustawSasiadow(sasiedzi);
-	}
-
-	public StanKomorki dajStanKomorki(int indeks) {
-		return populacja.get(indeks).dajStan();
 	}
 
 	private boolean czyWTymSamymRzedzie(int indeksKomorki1, int indeksKomorki2) {
